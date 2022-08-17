@@ -1,0 +1,17 @@
+#container {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  max-height: 600px;
+  min-height: 200px;
+}
+  
+#sudoku-aa {
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+#sudoku-aa-solution {
+  height: 100%;
+  aspect-ratio: 1/1;
+}

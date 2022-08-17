@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>sudoku-aa</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div>
+      sudoku-aa: Enter sudoku given numbers on the left, click solve, and see the solution on the right. 
+      Optionally, enable variants with diagonals and consecutive dots.
+    </div>
+    <div id="container">
+      <div id="sudoku-aa"></div>
+      <div style="width:20px"></div>
+      <div id="sudoku-aa-solution"></div>
+    </div>
+    <div id="test">
+      <button onclick="restart()">Restart</button>
+      <button onclick="solve()">solve</button>
+      <button onclick="diagonals()">diagonals</button>
+      <button onclick="consecutive()">consecutive dots</button>
+    </div>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

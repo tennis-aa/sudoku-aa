@@ -1,0 +1,6 @@
+emsdk activate latest
+
+//Debug
+emcc ./SudokuSolver/SudokuSolver.cpp ./SudokuSolver/main.cpp -o SudokuSolver.js --pre-js="preamble.js" -sEXPORTED_FUNCTIONS="['_interactive_mode','_solve_sudoku','_malloc','_free']" -sEXPORTED_RUNTIME_METHODS="['cwrap','allocateUTF8','UTF8ToString']" -sASYNCIFY=1 -sASYNCIFY_IMPORTS='["emscripten_utils_getline_impl"]'
+//Release
+emcc ./SudokuSolver/SudokuSolver.cpp ./SudokuSolver/main.cpp -o SudokuSolver.js -O3 --pre-js="preamble.js" -sEXPORTED_FUNCTIONS="['_interactive_mode','_solve_sudoku','_malloc','_free']" -sEXPORTED_RUNTIME_METHODS="['cwrap','allocateUTF8','UTF8ToString']" -sASYNCIFY=1 -sASYNCIFY_IMPORTS='["emscripten_utils_getline_impl"]'
