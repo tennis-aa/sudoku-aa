@@ -109,6 +109,7 @@ export class Sudoku_aa {
   keydownCommands() {
     let that = this;
     return function(event) {
+      event.preventDefault();
       let div = event.currentTarget;
       let index = Array.from(that.sudokuboard.children).indexOf(div);
       let val = event.key;
@@ -119,7 +120,26 @@ export class Sudoku_aa {
       else if (val == "Delete" || val == "Backspace") {
         that.grid[index] = 0;
         div.textContent = "";
-      } 
+      }
+      else if (val === "ArrowRight") {
+        if ((index + 1) % 9 == 0) index -= 9;
+        that.sudokuboard.children[index + 1].focus();
+      }
+      else if (val === "ArrowLeft") {
+        if (index % 9 == 0) index += 9;
+        that.sudokuboard.children[index - 1].focus();
+      }
+      else if (val === "ArrowDown") {
+        if (index >= 72) index -= 81;
+        that.sudokuboard.children[index + 9].focus();
+      }
+      else if (val === "ArrowUp") {
+        if (index < 9) index += 81;
+        that.sudokuboard.children[index - 9].focus();
+      }
+      else {
+        console.log(val)
+      }
     };
   }
 
@@ -176,7 +196,7 @@ export class Sudoku_aa {
   }
 
   createDots(x,y) {
-    let dotdim = 2;
+    let dotdim = 2.5;
     let but = document.createElement("div");
     but.style.backgroundColor = "white";
     but.style.width = dotdim + "%";
@@ -185,6 +205,7 @@ export class Sudoku_aa {
     but.style.left = (x - dotdim/2) + "%";
     but.style.top = (y - dotdim/2) + "%";
     but.style.borderRadius = 100 + "%";
+    but.style.boxSizing = "border-box";
     but.style.border = "1px solid black";
     return but;
   }
