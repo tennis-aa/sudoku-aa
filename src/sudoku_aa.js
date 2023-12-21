@@ -71,10 +71,14 @@ export class Sudoku_aa {
         let but_row = this.createDots(100/9*(j+1), 100/18+100*i/9);
         but_row.onclick = this.activateRowDot(i,j);
         this.rowDots.push(but_row);
+        this.container.appendChild(but_row);
+      }
+    }
+    for (let i=0; i<9; ++i) {
+      for (let j=0; j<8; ++j) {
         let but_col = this.createDots(100/18+100*i/9,100/9*(j+1));
         but_col.onclick = this.activateColDot(i,j);
         this.colDots.push(but_col);
-        this.container.appendChild(but_row);
         this.container.appendChild(but_col);
       }
     }
@@ -127,6 +131,7 @@ export class Sudoku_aa {
     svg.style.left = "0";
     svg.style.opacity = "0.6";
     svg.style.pointerEvents = "none";
+    svg.style.zIndex = "-1";
     svg.setAttribute("height", "100%");
     svg.setAttribute("apect-ratio", "1/1");
     svg.setAttribute("viewBox", "0 0 9 9");
@@ -169,7 +174,7 @@ export class Sudoku_aa {
       }
     }
   }
-  
+
   createDots(x,y) {
     let dotdim = 2;
     let but = document.createElement("div");
@@ -189,11 +194,11 @@ export class Sudoku_aa {
     return function (event) {
       if (that.consecutive_rows[8*i + j]) {
         that.consecutive_rows[8*i + j] = false;
-        event.currentTarget.style.backgroundColor = "white";
+        event.currentTarget.style.boxShadow = "none";
       }
       else {
         that.consecutive_rows[8*i +j] = true;
-        event.currentTarget.style.backgroundColor = "red";
+        event.currentTarget.style.boxShadow = "inset 0 0 0 1000px red";
       }
     };
   }
@@ -203,11 +208,11 @@ export class Sudoku_aa {
     return function (event) {
       if (that.consecutive_cols[8*i + j]) {
         that.consecutive_cols[8*i + j] = false;
-        event.currentTarget.style.backgroundColor = "white";
+        event.currentTarget.style.boxShadow = "none";
       }
       else {
         that.consecutive_cols[8*i +j] = true;
-        event.currentTarget.style.backgroundColor = "red";
+        event.currentTarget.style.boxShadow = "inset 0 0 0 1000px red";
       }
     };
   }
